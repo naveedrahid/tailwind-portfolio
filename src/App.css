@@ -1,0 +1,38 @@
+body{
+    font-size: 18px;
+}
+.experienceItem {
+    position: relative;
+    padding-left: 30px;
+}
+
+.experienceItem:before {
+    content: '';
+    background: black;
+    width: 1px;
+    height: 95%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.experienceItem:after {
+    content: '';
+    border: solid 1px black;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: -9px;
+    border-radius: 100%;
+    background:#fff;
+}
+.content {
+    background-color: #eeeded;
+    display: none;
+    padding: 10px;
+}
+
+.active-content {
+    display: block;
+}
