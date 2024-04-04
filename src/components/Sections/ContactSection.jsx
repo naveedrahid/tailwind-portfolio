@@ -19,28 +19,33 @@ export default function ContactSection() {
                         <form>
                             <div className="flex flex-wrap">
                                 <div className="w-1/2">
-                                    <label class="block">
-                                        <span class="block text-sm font-medium text-slate-700">Your Name</span>
-                                        <input type="text" name="email" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Enter You name" />
+                                    <label className="block">
+                                        <span className="block text-sm font-medium text-slate-700">Your Name</span>
+                                        <input type="text" name="email" className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Enter You name" />
                                     </label>
                                 </div>
                                 <div className="w-1/2">
-                                    <label class="block">
-                                        <span class="block text-sm font-medium text-slate-700">Email</span>
-                                        <input type="email" name="email" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Enter You Email" />
+                                    <label className="block">
+                                        <span className="block text-sm font-medium text-slate-700">Email</span>
+                                        <input type="email" name="email" className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Enter You Email" />
                                     </label>
                                 </div>
                                 <div className="w-full">
-                                    <label class="block">
-                                        <span class="block text-sm font-medium text-slate-700">Subject</span>
-                                        <input type="email" name="email" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Subject" />
+                                    <label className="block">
+                                        <span className="block text-sm font-medium text-slate-700">Subject</span>
+                                        <input type="email" name="email" className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Subject" />
                                     </label>
                                 </div>
                                 <div className="w-full">
-                                    <label class="block">
-                                        <span class="block text-sm font-medium text-slate-700">Message</span>
+                                    <label className="block">
+                                        <span className="block text-sm font-medium text-slate-700">Message</span>
                                     </label>
-                                    <textarea name="" className='resize-none h-40 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1'>Message</textarea>
+                                    <textarea
+                                        name="textarea"
+                                        className='resize-none h-40 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1'
+                                        placeholder="Message"
+                                        defaultValue="Message"
+                                    ></textarea>
                                 </div>
                             </div>
                         </form>

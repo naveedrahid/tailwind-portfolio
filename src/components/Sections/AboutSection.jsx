@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProfileImg from '../../assets/img/profile-img.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { apiService } from '../../services/ApiServices'
+import { configVariable } from '../../../sample.config'
+import SanitizedHtml from '../../lib/SanitizedHtml'
 
 export default function AboutSection() {
+
+    const [aboutData, setAboutData] = useState([]);
+
+    const getAboutData = async () => {
+        try {
+            const result = await apiService.get(`${configVariable.basUrl}personal`)
+            setAboutData(result?.data || [])
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    useEffect(() => {
+        getAboutData()
+    }, []);
     return (
         <div className="h-dvh flex items-center" id='abtMove'>
             <div className="container mx-auto">
@@ -21,76 +38,26 @@ export default function AboutSection() {
                         </div>
                         <div className="w-2/3">
                             <div className="contentProfile px-5">
-                                <h2 className='text-4xl font-semibold'>UI/UX Designer & Web Developer.</h2>
-                                <p className='my-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <h2 className='text-4xl font-semibold'>{aboutData.section_title}</h2>
+                                <p className='my-4'>
+                                {/* {
+                                    <SanitizedHtml sanitizedHtmlField={aboutData?.about_self_content?.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')} />
+                                aboutData?.about_self_content..replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+                                } */}
+                                </p>
                                 <div className="flex">
                                     <div className="w-1/2">
-                                        <div className="flex items-center mb-5 text-xl">
-                                            <FontAwesomeIcon
-                                                icon={faChevronRight}
-                                                className='mr-2'
-                                            />
-                                            <strong className='mr-2'>Birthday</strong>
-                                            <span>15 May 1990</span>
-                                        </div>
-                                        <div className="flex items-center mb-5 text-xl">
-                                            <FontAwesomeIcon
-                                                icon={faChevronRight}
-                                                className='mr-2'
-                                            />
-                                            <strong className='mr-2'>Birthday</strong>
-                                            <span>15 May 1990</span>
-                                        </div>
-                                        <div className="flex items-center mb-5 text-xl">
-                                            <FontAwesomeIcon
-                                                icon={faChevronRight}
-                                                className='mr-2'
-                                            />
-                                            <strong className='mr-2'>Birthday</strong>
-                                            <span>15 May 1990</span>
-                                        </div>
-                                        <div className="flex items-center mb-5 text-xl">
-                                            <FontAwesomeIcon
-                                                icon={faChevronRight}
-                                                className='mr-2'
-                                            />
-                                            <strong className='mr-2'>Birthday</strong>
-                                            <span>15 May 1990</span>
-                                        </div>
-                                    </div>
-                                    <div className="w-1/2">
-                                        <div className="flex items-center mb-5 text-xl">
-                                            <FontAwesomeIcon
-                                                icon={faChevronRight}
-                                                className='mr-2'
-                                            />
-                                            <strong className='mr-2'>Birthday</strong>
-                                            <span>15 May 1990</span>
-                                        </div>
-                                        <div className="flex items-center mb-5 text-xl">
-                                            <FontAwesomeIcon
-                                                icon={faChevronRight}
-                                                className='mr-2'
-                                            />
-                                            <strong className='mr-2'>Birthday</strong>
-                                            <span>15 May 1990</span>
-                                        </div>
-                                        <div className="flex items-center mb-5 text-xl">
-                                            <FontAwesomeIcon
-                                                icon={faChevronRight}
-                                                className='mr-2'
-                                            />
-                                            <strong className='mr-2'>Birthday</strong>
-                                            <span>15 May 1990</span>
-                                        </div>
-                                        <div className="flex items-center mb-5 text-xl">
-                                            <FontAwesomeIcon
-                                                icon={faChevronRight}
-                                                className='mr-2'
-                                            />
-                                            <strong className='mr-2'>Birthday</strong>
-                                            <span>15 May 1990</span>
-                                        </div>
+                                        {Array.isArray(aboutData?.personal_detail) && aboutData?.personal_detail.length > 0 ? (
+                                            aboutData.personal_detail.map((item, index) => (
+                                                <div className="flex items-center mb-5 text-xl" key={index}>
+                                                    <FontAwesomeIcon icon={faChevronRight} className='mr-2' />
+                                                    <strong className='mr-2'>{item?.profile_title}</strong>
+                                                    <span>{item?.profile_info}</span>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <p>No data available</p>
+                                        )}
                                     </div>
                                 </div>
                                 <p className='my-4'>Officiis eligendi itaque
