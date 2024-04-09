@@ -8,6 +8,8 @@ import portfolio6 from '../../assets/img/portfolio-6.jpg'
 import portfolio7 from '../../assets/img/portfolio-7.jpg'
 import portfolio8 from '../../assets/img/portfolio-8.jpg'
 import portfolio9 from '../../assets/img/portfolio-9.jpg'
+import { apiService } from '../../services/ApiServices';
+import { configVariable } from '../../../sample.config';
 
 const Tab = ({ label, onClick, isActive }) => (
     <li className={`tabs cursor-pointer px-5 ${isActive ? "active-tabs" : ""}`} onClick={onClick}>
@@ -18,6 +20,13 @@ const Tab = ({ label, onClick, isActive }) => (
 export default function PortfolioSection() {
     const [activeTab, setActiveTab] = useState(0); 
     const [categories, setCategories] = useState([]);
+    const [portfolios, setPortfolios] = useState([])
+
+    const getPortfolioData = async() => {
+        const results = await apiService.get(`${configVariable.basUrl}website_portfolio`)
+        console.log(results?.data)
+        setPortfolios(results?.data)
+    }
 
     useEffect(() => {
         const categoriesData = [
@@ -26,6 +35,7 @@ export default function PortfolioSection() {
             { name: 'Laravel', images: [portfolio7, portfolio8, portfolio9] },
         ];
         setCategories(categoriesData);
+        getPortfolioData()
     }, []);
 
     const handleTabClick = (index) => {

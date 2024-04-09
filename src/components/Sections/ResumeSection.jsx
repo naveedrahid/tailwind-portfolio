@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleDot } from '@fortawesome/free-solid-svg-icons'
+import { apiService } from '../../services/ApiServices';
+import { configVariable } from '../../../sample.config';
 
 export default function ResumeSection() {
+    const [resume, setResume] = useState([]);
+
+    const resumeDataHandler = async () => {
+        const results  = await apiService.get(`${configVariable.basUrl}experience`)
+        console.log(results?.data);
+        setResume(results?.data)
+    }
+
+    useEffect(() => {
+        resumeDataHandler();
+    }, []);
+
     return (
         <div className="h-dvh flex items-center">
             <div className="container mx-auto">

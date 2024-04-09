@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function SanitizedHtml(sanitizedHtmlField) {
+export default function SanitizedHtml({sanitizedHtmlField}) {
   return (
-    <div dangerouslySetInnerHTML={{ __html: sanitizedHtmlField }} />
+    <div className='my-4' dangerouslySetInnerHTML={{ __html: sanitizedHtmlField }} />
     );
 }

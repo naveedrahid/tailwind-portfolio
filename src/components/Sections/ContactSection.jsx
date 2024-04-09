@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { apiService } from '../../services/ApiServices';
+import { configVariable } from '../../../sample.config';
 
 export default function ContactSection() {
+    const [info, setInfo] = useState([])
+
+    const contactGetData = async () => {
+        try {
+            const results = await apiService.get(`${configVariable.basUrl}contact`)
+            console.log(results?.data)
+            setInfo(results?.data)
+        } catch (error) {
+            console.log(error)
+
+        }
+    }
+
+    useEffect(() => {
+        contactGetData()
+    }, []);
+
     return (
         <div className="h-dvh flex items-center" id='abtMove'>
             <div className="container mx-auto">
