@@ -8,7 +8,7 @@ export default function ContactSection() {
     const contactGetData = async () => {
         try {
             const results = await apiService.get(`${configVariable.basUrl}contact`)
-            console.log(results?.data)
+            // console.log(results?.data)
             setInfo(results?.data)
         } catch (error) {
             console.log(error)

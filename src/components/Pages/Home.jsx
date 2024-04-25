@@ -2,9 +2,9 @@ import React from 'react'
 import bannerImg from '../../assets/img/hero-bg.jpg'
 import AboutSection from '../Sections/AboutSection';
 import SkillsSection from '../Sections/SkillsSection';
-import ResumeSection from '../Sections/ResumeSection';
 import PortfolioSection from '../Sections/PortfolioSection';
 import ContactSection from '../Sections/ContactSection';
+import ResumeSection from '../Sections/ResumeSection';
 
 function Home() {
   const backgroundStyle = {
